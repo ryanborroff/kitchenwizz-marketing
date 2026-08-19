@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Kitchen Wizz</title>
+  <meta name="description" content="How Kitchen Wizz handles data on this website and what to expect from the app." />
+  <link rel="canonical" href="https://kitchenwizz-marketing-production.up.railway.app/privacy.html" />
+  <link rel="icon" href="/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/assets/icon.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/#top" class="brand">
+        <img src="/assets/icon.png" alt="Kitchen Wizz" class="brand-icon" />
+        <span>Kitchen Wizz</span>
+      </a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-open" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-close" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#download" class="nav-cta">Get the app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="legal">
+      <div class="section-inner legal-inner">
+        <h1>Privacy Policy</h1>
+        <p class="legal-updated">Last updated: 19 August 2026</p>
+
+        <p>Kitchen Wizz is currently in pre-launch. This policy covers the <strong>kitchenwizz.com marketing website</strong> you're reading right now. A separate, fuller privacy policy covering the Kitchen Wizz app itself (recipes, account data, and in-app features) will be published before the app reaches general availability.</p>
+
+        <h2>What this website collects</h2>
+        <p>Nothing, automatically. This site doesn't use cookies, analytics, or third-party trackers, and it doesn't ask you to create an account or submit a form.</p>
+
+        <h2>The waitlist link</h2>
+        <p>The "Join the waitlist" button opens a pre-filled email in your own email app — it doesn't send anything on its own. If you choose to send that email, we receive whatever it contains (your email address and message) and use it only to let you know when Kitchen Wizz is available to download. We don't sell or share it with third parties, and you can ask us to delete it at any time.</p>
+
+        <h2>Hosting</h2>
+        <p>This site is hosted on Railway. Like most hosting providers, Railway's infrastructure may log basic technical data (such as IP address and request timing) for operating the service reliably and securely. We don't access this data for any other purpose.</p>
+
+        <h2>Questions</h2>
+        <p>If you have questions about this policy, email <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20privacy%20question">ryan.borroff@me.com</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <div class="brand">
+        <img src="/assets/icon.png" alt="Kitchen Wizz" class="brand-icon" />
+        <span>Kitchen Wizz</span>
+      </div>
+      <nav class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </nav>
+      <p>&copy; <span id="year"></span> Kitchen Wizz. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeNav() {
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open menu");
+    }
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNav);
+    });
+  </script>
+</body>
+</html>

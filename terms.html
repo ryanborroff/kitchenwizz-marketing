@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Kitchen Wizz</title>
+  <meta name="description" content="Terms for using the Kitchen Wizz marketing website." />
+  <link rel="canonical" href="https://kitchenwizz-marketing-production.up.railway.app/terms.html" />
+  <link rel="icon" href="/assets/icon.png" />
+  <link rel="apple-touch-icon" href="/assets/icon.png" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/#top" class="brand">
+        <img src="/assets/icon.png" alt="Kitchen Wizz" class="brand-icon" />
+        <span>Kitchen Wizz</span>
+      </a>
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-open" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-close" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="/#features">Features</a>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#download" class="nav-cta">Get the app</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="legal">
+      <div class="section-inner legal-inner">
+        <h1>Terms of Service</h1>
+        <p class="legal-updated">Last updated: 19 August 2026</p>
+
+        <p>These terms cover your use of the <strong>kitchenwizz.com marketing website</strong>. Kitchen Wizz is currently in pre-launch; separate terms and an end-user license agreement covering the app itself will apply once it's available to download, consistent with the App Store's standard terms.</p>
+
+        <h2>Using this site</h2>
+        <p>This website is provided to share information about Kitchen Wizz and let you join the waitlist. You're welcome to browse and share it. Please don't attempt to scrape, disrupt, or misrepresent its content.</p>
+
+        <h2>No warranty</h2>
+        <p>This site and its content are provided "as is," without warranties of any kind. Features, pricing, and availability described here are subject to change before launch.</p>
+
+        <h2>Intellectual property</h2>
+        <p>The Kitchen Wizz name, logo, and site content are owned by Kitchen Wizz. Please don't reuse them without permission.</p>
+
+        <h2>Contact</h2>
+        <p>Questions about these terms can be sent to <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20terms%20question">ryan.borroff@me.com</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <div class="brand">
+        <img src="/assets/icon.png" alt="Kitchen Wizz" class="brand-icon" />
+        <span>Kitchen Wizz</span>
+      </div>
+      <nav class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+      </nav>
+      <p>&copy; <span id="year"></span> Kitchen Wizz. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeNav() {
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open menu");
+    }
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNav);
+    });
+  </script>
+</body>
+</html>
