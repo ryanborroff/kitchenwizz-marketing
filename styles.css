@@ -40,6 +40,7 @@ img { max-width: 100%; display: block; }
 #top,
 #features,
 #how-it-works,
+#faq,
 #download {
   scroll-margin-top: 84px;
 }
@@ -220,8 +221,10 @@ img { max-width: 100%; display: block; }
 .hero-art {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   min-height: 280px;
 }
 
@@ -234,12 +237,116 @@ img { max-width: 100%; display: block; }
   filter: blur(2px);
 }
 
-.hero-icon {
+.phone-mock {
   position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 40px;
+  width: 240px;
+  background: #fff;
+  border: 8px solid #0D1117;
+  border-radius: 36px;
   box-shadow: 0 24px 60px rgba(0, 106, 175, 0.25);
+  overflow: hidden;
+}
+
+.phone-mock-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 20px;
+  background: #0D1117;
+  border-radius: 0 0 14px 14px;
+  z-index: 1;
+}
+
+.phone-mock-screen {
+  padding: 32px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phone-mock-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.phone-mock-logo {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+}
+
+.phone-mock-header span {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.phone-mock-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.phone-mock-search svg { width: 14px; height: 14px; flex-shrink: 0; }
+.phone-mock-search span { font-size: 11px; }
+
+.phone-mock-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px;
+}
+
+.phone-mock-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.phone-mock-thumb-1 { background: linear-gradient(135deg, #FFD08A, #F97316); }
+.phone-mock-thumb-2 { background: linear-gradient(135deg, #B8E6C1, #2E7D32); }
+.phone-mock-thumb-3 { background: linear-gradient(135deg, #F9C6D8, #DB2777); }
+
+.phone-mock-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.phone-mock-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phone-mock-tag {
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.phone-mock-caption {
+  position: relative;
+  font-size: 12px;
+  color: var(--muted);
+  margin: 0;
 }
 
 /* Features */
@@ -358,6 +465,64 @@ img { max-width: 100%; display: block; }
 
 .step h3 { margin: 0 0 8px; font-size: 18px; }
 .step p { color: var(--muted); margin: 0; font-size: 15px; }
+
+/* FAQ */
+.faq { padding: 96px 0; }
+
+.faq h2 {
+  font-size: 34px;
+  text-align: center;
+  margin: 0 0 40px;
+  letter-spacing: -0.01em;
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px 20px;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-chevron {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+
+.faq-item p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 18px;
+}
+
+.faq-item p a { color: var(--primary); }
 
 /* CTA */
 .cta { padding: 96px 0; text-align: center; }
