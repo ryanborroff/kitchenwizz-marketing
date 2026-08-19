@@ -84,7 +84,13 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
 }
 
-.nav-links a { color: var(--muted); }
+.nav-links a {
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+}
+
 .nav-links a:hover { color: var(--primary); }
 
 .nav-cta {
@@ -94,6 +100,28 @@ img { max-width: 100%; display: block; }
   border-radius: 10px;
   font-weight: 600;
 }
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.nav-toggle-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.nav-toggle-close { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-open { display: none; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-close { display: block; }
 
 /* Hero */
 .hero {
@@ -176,6 +204,18 @@ img { max-width: 100%; display: block; }
   font-size: 13px;
   color: var(--muted);
 }
+
+.waitlist-confirm {
+  margin: 10px 0 0;
+  min-height: 1em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.waitlist-confirm.visible { opacity: 1; }
 
 .hero-art {
   position: relative;
@@ -307,6 +347,13 @@ img { max-width: 100%; display: block; }
 .cta p { color: var(--muted); font-size: 17px; margin: 0 0 32px; }
 .cta-actions { justify-content: center; }
 
+.cta-inner .waitlist-confirm {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 10px 0 0;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--border);
@@ -331,5 +378,35 @@ img { max-width: 100%; display: block; }
   .feature-primary { grid-column: span 1; }
   .steps { grid-template-columns: 1fr; }
   .hero-copy h1 { font-size: 36px; }
-  .nav-links { gap: 16px; }
+}
+
+@media (max-width: 700px) {
+  .nav-toggle { display: flex; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 24px 20px;
+    box-shadow: 0 12px 24px rgba(13, 17, 23, 0.08);
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    min-height: 48px;
+    padding: 0 4px;
+  }
+
+  .nav-cta {
+    justify-content: center;
+    margin-top: 4px;
+  }
 }

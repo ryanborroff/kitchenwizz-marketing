@@ -16,7 +16,18 @@
         <img src="/assets/icon.png" alt="Kitchen Wizz" class="brand-icon" />
         <span>Kitchen Wizz</span>
       </a>
-      <nav class="nav-links">
+      <button
+        type="button"
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="navLinks"
+      >
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-open" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg viewBox="0 0 24 24" class="nav-toggle-icon nav-toggle-close" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+      <nav class="nav-links" id="navLinks">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
         <a href="#download" class="nav-cta">Get the app</a>
@@ -39,7 +50,7 @@
             meals. Your grocery list builds itself.
           </p>
           <div class="hero-actions">
-            <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20waitlist" class="btn btn-store" aria-label="Join the waitlist by email">
+            <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20waitlist" class="btn btn-store waitlist-link" aria-label="Join the waitlist by email" data-confirm-target="hero-waitlist-confirm">
               <svg viewBox="0 0 24 24" class="store-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
               <span>
                 <small>Be first to know</small>
@@ -55,6 +66,7 @@
             </a>
           </div>
           <p class="hero-note">Google Play version launching soon.</p>
+          <p class="waitlist-confirm" id="hero-waitlist-confirm" aria-live="polite"></p>
         </div>
         <div class="hero-art">
           <div class="hero-blob"></div>
@@ -125,7 +137,7 @@
         <h2>Get Kitchen Wizz on your phone</h2>
         <p>Free to download. Start organising your kitchen today.</p>
         <div class="hero-actions cta-actions">
-          <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20waitlist" class="btn btn-store" aria-label="Join the waitlist by email">
+          <a href="mailto:ryan.borroff@me.com?subject=Kitchen%20Wizz%20waitlist" class="btn btn-store waitlist-link" aria-label="Join the waitlist by email" data-confirm-target="cta-waitlist-confirm">
             <svg viewBox="0 0 24 24" class="store-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
             <span>
               <small>Be first to know</small>
@@ -140,6 +152,7 @@
             </span>
           </a>
         </div>
+        <p class="waitlist-confirm" id="cta-waitlist-confirm" aria-live="polite"></p>
       </div>
     </section>
   </main>
@@ -156,6 +169,38 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    function closeNav() {
+      navLinks.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+      navToggle.setAttribute("aria-label", "Open menu");
+    }
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeNav);
+    });
+
+    document.querySelectorAll(".waitlist-link").forEach((link) => {
+      link.addEventListener("click", () => {
+        const target = document.getElementById(link.dataset.confirmTarget);
+        if (!target) return;
+        target.textContent = "Opening your email app…";
+        target.classList.add("visible");
+        window.clearTimeout(target._hideTimer);
+        target._hideTimer = window.setTimeout(() => {
+          target.classList.remove("visible");
+        }, 4000);
+      });
+    });
   </script>
 </body>
 </html>
