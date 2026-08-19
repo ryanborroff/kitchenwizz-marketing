@@ -240,8 +240,6 @@ img { max-width: 100%; display: block; }
   border: none;
 }
 
-.feature-primary p { color: rgba(255, 255, 255, 0.85); }
-
 .feature-icon {
   width: 28px;
   height: 28px;
@@ -261,6 +259,10 @@ img { max-width: 100%; display: block; }
 .feature-card h3 {
   font-size: 19px;
   margin: 0 0 8px;
+}
+
+.feature-card.feature-primary p {
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .feature-card p {
